@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+  <!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+<head>
+    <title>Tra Top</title>
+    <link rel="icon"  type = "image/jpg" href="images/fertil.png" />
+
+
+	<meta charset="utf-8">
+    <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
+  	<meta name="description" content="Leaflet Coord Projection">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	 <!--LEAFLET-->
+     <link rel="stylesheet" href="leaflet.css">
+     <link href="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet"/>
+     <link rel="stylesheet" href="//unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+      <!--coordonnées /-->
+      <link rel="stylesheet" href="https://edihasaj.github.io/leaflet-coord-projection/coord-projection.css"/>
+     <!--localisation /-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.78.0/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <!--Itinéraire /-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <!--search bar /-->
+     <link rel="stylesheet" href="//unpkg.com/@sjaakp/leaflet-search/dist/leaflet-search.css" />
+     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+     <!----======== CSS ======== -->
+    <link rel="stylesheet" href="css.css">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+    </head>
+    <!----===== CONTENU DU SIDEBAR ===== -->
+    <body onload="hideLoader()">
+        <div id="loader"></div>
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="images/logo.svg" alt="">
+                    </span>
+    
+                    <div class="text logo-text">
+                        <span class="name">Recensement</span>
+                        <span class="profession">Haut Founty</span>
+                    </div>
+                </div>
+    
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+    
+            <div class="menu-bar">
+                <div class="menu">
+    
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <button href="#" onclick="refresh()" value="Rafraichir">
+                                <i class='bx bx-refresh bx-spin bx-rotate-90 icon' ></i>
+                                <span class="text navtext">RECHARGER LA PAGE</span>
+                            </button>
+                        </li>
+                        <li class="nav-link">
+                            <button href="#" onclick='hideDiv("myDiv");hide_other_divs("myDiv");'>
+                                <i class='bx bxs-dashboard bx-flashing icon' ></i>
+                                <span class="text navtext">Dashboard</span>
+                            </button>
+                        </li>
+                        
+    
+                        <li class="nav-link">
+                          <button href="Excel.rar" download onclick="downloadFile('Excel.rar')">
+                              <i class='bx bxs-download bx-flashing icon'></i>
+                              <span class="text nav-text">Télécharger Excel</span>
+                          </button>
+                          
+                      </li>
+                        
+    
+                        <!--<li class="nav-link">
+                            <button href="#"onclick='hideDiv("Divfer");hide_other_divs("Divfer");'>
+                                <i class='bx bxs-leaf bx-flashing icon' ></i>
+                                <span class="text nav-text">Fertilité du sol</span>
+                            </button>
+                        </li>
+                        <div id="Divfer" class="DIV" style="display: none;">
+                            <hr>
+                            <p>Les cartes choroplètes des données de fertilité du sol.</p>
+                            <h4>Choisissez la carte de la donnée que vous voulez: </h4>
+                            <button id="btnfour" onclick="showphos();"><b>Afficher la carte du phosphore assimilable</b></button>
+                            <button id="btnfour" onclick="showpot();"><b>Afficher la carte du de potassium échangeable</b></button>
+                            <button id="btnfour" onclick="showMO();"><b>Afficher la carte de la matière organique</b></button>
+                            <button id="btnfour" onclick="showpH();"><b>Afficher la carte de la valeur du pH</b></button>
+                        </div>
+    
+                        <li class="nav-link">
+                            <button onclick='hideDiv("DivITE");hide_other_divs("DivITE");'>
+                                <i class='bx bx-trip bx-flashing icon' ></i>
+                                <span class="text nav-text">Itinéraire</span>
+                            </button>
+                        </li>
+                        <div id="DivITE" class="DIV" style="display: none;">
+                            <hr>
+                            <button id="btnfour" onclick="showitineraire();"><b>CLIQUER POUR ACTIVER LA FONCTION D'ITINERAIRE</b></button>
+                            <p><b>Cliquer sur le point désiré, pour voir son itinéraire</b></p>
+                        </div>
+                        <li class="nav-link">
+                            <button href="#"onclick='hideDiv("DivRas");hide_other_divs("DivRas");'>
+                                <i class='bx bxs-file bx-flashing icon' ></i>
+                                <span class="text nav-text">Rasters</span>
+                            </button>
+                        </li>
+                        <div id="DivRas" class="DIV" style="display: none;">
+                            <hr>
+                            <button id="btnfour" onclick="showRaster();"><b>CLIQUER POUR AFFICHER LE RASTER DU RENDEMENT DU BLE</b></button>
+                        </div>
+                        <li class="nav-link">
+                            <button onclick='hideDiv("Divble");hide_other_divs("Divble");'>
+                                <i class='bx bx-spa bx-flashing icon' ></i>
+                                <span class="text nav-text">Rendement du blé</span>
+                            </button>
+                        </li>
+                        <div id="Divble" class="DIV" style="display: none;">
+                            <hr>
+                            <p>Carte à symboles proportionnels qui illustre le rendement du blé dans les communes du province de Moulay yacoub</p>
+                            <button id="btnfour" onclick="showble();"><b>Afficher la carte à symbole proportionelle du rendement du blé.</b></button>
+                            
+                        </div>-->
+    
+                    </ul>
+                </div>
+    
+                <div class="bottom-content">
+                    <li class="">
+                        <button onclick="redirectToMap()">
+                            <i class='bx bx-reset bx-spin bx-flip-horizontal icon' ></i>
+                            <span class="text nav-text">Actualiser la map</span>
+                        </button>
+                    </li>
+    
+                    <li class="mode">
+                        <div class="sun-moon">
+                            <i class='bx bx-moon icon moon'></i>
+                            <i class='bx bx-sun icon sun'></i>
+                        </div>
+                        <span class="mode-text text">Dark mode</span>
+    
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                    
+                </div>
+            </div>
+    
+        </nav>
+    
+        <section class="home">
+            <!--<div class="text"><b>🌱GEOPORTAIL AGRICOLE</b></div>-->
+            <div id="map" style="width: 186vh; height: 108vh; margin: 0px; margin-left: 100px;"></div>
+            
+        </section>
+        <!-- leaflet-->
+    <script type="text/javascript" src="leaflet.js"></script>
+    <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="//unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+     <!-- script sidebar-->
+     <script type="text/javascript" src="script.js"></script>
+     <!-- area-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/2.0.2/turf.min.js"></script>
+ 
+   <!--search bar /-->
+   <script src="//unpkg.com/@sjaakp/leaflet-search/dist/leaflet-search.js"></script>
+
+   
+<!-- contenu du geoportail-->
+<br>
+<section class="main">
+  <div class="main-top">
+    <br>
+    <!--<h1>Dashboard</h1>-->
+    <i class="fas fa-user-cog"></i>
+  </div>
+  <div class="users">
+    <div class="card">
+      <h2>Nombre Totale</h2>
+      <br>
+      <h3>4 </h3>
+      <br>
+      <div class="per">
+        <table>
+          <tr>
+            <td><span>100%</span></td>
+            <td><span>0%</span></td>
+          </tr>
+          <tr>
+            <td>Immatriculé</td>
+            <td>Non Immatriculé</td>
+          </tr>
+        </table>
+      </div>
+      <button>Profile</button>
+    </div>
+    <div class="card">
+      <br>
+      <h2>Surface Totale</h2>
+      <br>
+      <h3>1274 m²</h3>
+      <br>
+      <br>
+      <button>Profile</button>
+    </div>
+    <div class="card">
+      <br>
+      <h1>Consistance</h1>
+      <br>
+      <br>
+      <div class="per">
+        <table>
+          <tr>
+            <td><span>25%</span></td>
+            <td><span>25%</span></td>
+            <td><span>50%</span></td>
+            <td><span>0%</span></td>
+          </tr>
+          <tr>
+            <td>Immeuble</td>
+            <td>Maison Individuelle</td>
+            <td>Villa</td>
+            <td>Terrain Nu</td>
+          </tr>
+        </table>
+      </div>
+      <button>Profile</button>
+    </div>
+    
+  </div>
+
+  <section class="attendance">
+    <div class="attendance-list">
+      <h1>Informations par quartier :</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Quartier</th>
+            <th>Nombre Totale</th>
+            <th>Surface Totale</th>
+            <th>Consistance</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>Haut Founty</td>
+            <td>4</td>
+            <td>1274</td>
+            <td>1 Immeuble<br>1 Maison Individuelle<br>2 Villas</td>
+            <td><button onclick="redirectToMap()">View</button></td>
+          </tr>
+         <!-- <tr class="active">
+            <td>02</td>
+            <td>Balbina Kherr</td>
+            <td>Coding</td>
+            <td>03-24-22</td>
+            <td>9:00AM</td>
+            <td>4:00PM</td>
+            <td><button>View</button></td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td>Badan John</td>
+            <td>testing</td>
+            <td>03-24-22</td>
+            <td>8:00AM</td>
+            <td>3:00PM</td>
+            <td><button>View</button></td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td>Sara David</td>
+            <td>Design</td>
+            <td>03-24-22</td>
+            <td>8:00AM</td>
+            <td>3:00PM</td>
+            <td><button>View</button></td>
+          </tr>
+           <tr >
+            <td>05</td>
+            <td>Salina</td>
+            <td>Coding</td>
+            <td>03-24-22</td>
+            <td>9:00AM</td>
+            <td>4:00PM</td>
+            <td><button>View</button></td>
+          </tr>
+          <tr >
+            <td>06</td>
+            <td>Tara Smith</td>
+            <td>Testing</td>
+            <td>03-24-22</td>
+            <td>9:00AM</td>
+            <td>4:00PM</td>
+            <td><button>View</button></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.30.0-'s-Hertogenbosch">
+  <identifier></identifier>
+  <parentidentifier></parentidentifier>
+  <language></language>
+  <type>dataset</type>
+  <title></title>
+  <abstract></abstract>
+  <contact>
+    <name></name>
+    <organization></organization>
+    <position></position>
+    <voice></voice>
+    <fax></fax>
+    <email></email>
+    <role></role>
+  </contact>
+  <links/>
+  <dates/>
+  <fees></fees>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt>PROJCRS["Merchich_Sud_Maroc",BASEGEOGCRS["GCS_MERCHICH",DATUM["Merchich",ELLIPSOID["Clarke 1880 (IGN)",6378249.2,293.46602,LENGTHUNIT["metre",1]],ID["EPSG",6261]],PRIMEM["Greenwich",0,ANGLEUNIT["Degree",0.0174532925199433]]],CONVERSION["unnamed",METHOD["Lambert Conic Conformal (2SP Michigan)",ID["EPSG",1051]],PARAMETER["Latitude of false origin",29.7,ANGLEUNIT["Degree",0.0174532925199433],ID["EPSG",8821]],PARAMETER["Longitude of false origin",-5.4,ANGLEUNIT["Degree",0.0174532925199433],ID["EPSG",8822]],PARAMETER["Latitude of 1st standard parallel",29.7,ANGLEUNIT["Degree",0.0174532925199433],ID["EPSG",8823]],PARAMETER["Latitude of 2nd standard parallel",29.7,ANGLEUNIT["Degree",0.0174532925199433],ID["EPSG",8824]],PARAMETER["Easting at false origin",500000,LENGTHUNIT["metre",1],ID["EPSG",8826]],PARAMETER["Northing at false origin",300000,LENGTHUNIT["metre",1],ID["EPSG",8827]],PARAMETER["Ellipsoid scaling factor",0.999615596,SCALEUNIT["unity",1],ID["EPSG",1038]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1,ID["EPSG",9001]]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1,ID["EPSG",9001]]]]</wkt>
+      <proj4>+proj=lcc +lat_0=29.7 +lon_0=-5.4 +lat_1=29.7 +lat_2=29.7 +x_0=500000 +y_0=300000 +k_0=0.999615596 +a=6378249.2 +rf=293.46602 +units=m +no_defs +type=crs</proj4>
+      <srsid>0</srsid>
+      <srid>0</srid>
+      <authid></authid>
+      <description>Merchich_Sud_Maroc</description>
+      <projectionacronym></projectionacronym>
+      <ellipsoidacronym>PARAMETER:6378249.20000000018626451:6356514.99990419391542673</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial dimensions="2" maxx="0" miny="0" maxz="0" minx="0" crs="" maxy="0" minz="0"/>
+    <temporal>
+      <period>
+        <start></start>
+        <end></end>
+      </period>
+    </temporal>
+  </extent>
+</qgis>

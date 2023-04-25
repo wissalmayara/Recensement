@@ -1,0 +1,8 @@
+var Immeuble76 = {
+    "type": "FeatureCollection",
+    "name": "Immeuble76",
+    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+    "features": [
+{ "type": "Feature", "properties": { "Code": "HAUT FOUNTY 76", "Adrss_bien": "LOT 76 Haut Founty", "Titre_Fonc": "152141/09", "Superficie": "300", "Quote_Part": null, "Consistanc": "immeuble en R+5", "Activité": "Magasin et 10 Habitations", "Propriéta": "Syndic des copropietaires", "Observatio": null, "Photo": "E:\\Bureau\\RECENSEMENT HFOUNTY\\Immeuble76.PNG", "Lien_Vv": "https://tratop2.iv.navvis.com/?poi=1748983588160664&fov=120.0&site=1321523076981898" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -9.577668715682591, 30.397896608428038 ], [ -9.5776687594627, 30.397896653742073 ], [ -9.57755220806008, 30.3979562719821 ], [ -9.57742626144686, 30.397770333039777 ], [ -9.577542646485071, 30.397710608953147 ], [ -9.577668715682591, 30.397896608428038 ] ] ] ] } }
+]
+}
